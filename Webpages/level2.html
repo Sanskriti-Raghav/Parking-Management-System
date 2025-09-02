@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoPark - Parking Space Booking</title>
+    <link rel="stylesheet" href="level2.css">
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .parking-section {
+            margin: 20px 0;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .row-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .parking-spot {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #100c4c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .parking-spot:hover {
+            background-color: green;
+            transform: scale(1.1);
+        }
+        .taken {
+            background-color: red !important;
+            color: white;
+            cursor: not-allowed;
+        }
+        .selected {
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GoPark - Parking Space Booking</h1>
+        <div class="parking-section" id="twoWheelerSection">
+            <div class="row-label">Parking Spots Available for 2 Wheelers</div>
+            <div class="row" id="twoWheelerSpots"></div>
+        </div>
+    </div>
+
+    <script>
+        function createParkingSpots(sectionId, startNumber, endNumber) {
+            const section = document.getElementById(sectionId);
+            for (let i = startNumber; i <= endNumber; i++) {
+                const spotNumber = i.toString();
+                const spotId = `B${spotNumber}`;
+                const button = document.createElement('button');
+                button.className = 'parking-spot';
+                button.textContent = spotId;
+
+                button.addEventListener('click', function() {
+                    if (!this.classList.contains('taken')) {
+                        document.querySelectorAll('.parking-spot').forEach(btn => btn.classList.remove('selected'));
+                        this.classList.add('selected');
+                        const confirmSpot = confirm('Confirm the spot?');
+                        if (confirmSpot) {
+                            // Update the spot in the database here
+                            window.location.href = 'details.html'; // Replace with the actual redirect page URL
+                        } else {
+                            this.classList.remove('selected');
+                        }
+                    }
+                });
+
+                section.appendChild(button);
+            }
+        }
+
+        createParkingSpots('twoWheelerSpots', 1, 40);
+    </script>
+</body>
+</html>

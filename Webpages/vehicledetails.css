@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #2c3e50; /* Dark background color */
+    color: #ecf0f1; /* Light text color */
+}
+
+.container {
+    background-color: #34495e; /* Darker container background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 300px; /* Fixed width for container */
+    text-align: center;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+h2 {
+    margin-bottom: 20px;
+    animation: slideIn 0.5s ease-out; /* Slide-in animation */
+}
+
+input[type="text"], select {
+    width: 100%; /* Ensures both elements take full width of the container */
+    max-width: 100%; /* Prevents exceeding container width */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #3498db; /* Highlight border on focus */
+    background-color: #34495e;
+}
+
+button {
+    background-color: #1abc9c; /* Teal button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    animation: pulse 1s infinite; /* Pulse animation */
+}
+
+button:hover {
+    background-color: #16a085; /* Darker teal on hover */
+}
+
+#confirmationMessage {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #2ecc71; /* Green color for confirmation */
+    display: none; /* Initially hidden */
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

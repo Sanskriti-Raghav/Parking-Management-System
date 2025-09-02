@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking System</title>
+    <link rel="stylesheet" href="vehicledetails.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Parking System</h2>
+        <form id="parkingForm">
+            <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number" required>
+            <select id="vehicleType" required>
+                <option value="" disabled selected>Select Vehicle Type</option>
+                <option value="twoWheeler">Two Wheeler</option>
+                <option value="fourWheeler">Four Wheeler</option>
+            </select>
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+        <p id="confirmationMessage" class="hidden">Your slot is confirmed!</p>
+    </div>
+
+    <script>
+        function validateForm() {
+            var vehicleNumber = document.getElementById('vehicleNumber').value;
+            var vehicleType = document.getElementById('vehicleType').value;
+
+            if (!vehicleNumber || !vehicleType) {
+                alert("Please fill all fields");
+            } else {
+                location.href = 'levelselection.html';
+            }
+        }
+    </script>
+</body>
+</html>
